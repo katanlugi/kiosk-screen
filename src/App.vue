@@ -1,14 +1,41 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/display">Display</router-link>
+    </div> -->
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+    data() {
+        return {
+            timer: '',
+        }
+    },
+    created() {
+        // 300000ms == 5min
+        this.timer = setInterval(this.reloadPage, 300000)
+    },
+    methods: {
+        reloadPage() {
+            window.location.reload();
+        }
+    }
+}
+</script>
+
+
 <style lang="scss">
+html, body {
+    overflow: hidden;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
